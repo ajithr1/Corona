@@ -1,7 +1,5 @@
 package com.ajith.covid_19;
 
-import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -10,7 +8,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
-    public ViewPagerAdapter(@NonNull FragmentManager fm) {
+    ViewPagerAdapter(@NonNull FragmentManager fm) {
         super(fm);
     }
 
@@ -18,13 +16,11 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
 
-        DashBoard dashBoard = new DashBoard();
-        Bundle bundle = new Bundle();
-        position = position + 1;
+        if (position == 0){
+            return new DashBoard();
+        }
 
-        bundle.putString("key", ""+position);
-        dashBoard.setArguments(bundle);
-        return dashBoard;
+        return new States();
     }
 
     @Override

@@ -5,13 +5,13 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ApiClass {
+class ApiClass {
 
-    private static final String BASE_URL = "https://api.covid19india.org/";
+    private static final String BASE_URL = "https://api.covid19api.com/";
     private static Retrofit retrofit;
 
 
-    public static Retrofit getRetrofit() {
+    static Retrofit getRetrofit() {
         if (retrofit == null){
 
             OkHttpClient client = new OkHttpClient.Builder()
