@@ -8,6 +8,9 @@ import retrofit2.http.GET;
 
 public interface ApiInterface {
 
-    @GET("summary")
-    Call<JsonElement> getData();
+    @GET("all")
+    Call<JsonElement> getDataWorld();
+
+    @GET("data.json")
+    Call<JsonElement> getDataIndia();
 }
