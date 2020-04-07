@@ -16,8 +16,9 @@ public class ApiIndia {
 
             OkHttpClient client = new OkHttpClient.Builder()
                     .retryOnConnectionFailure(true)
-                    .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                     .build();
+
+            //.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
 
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)

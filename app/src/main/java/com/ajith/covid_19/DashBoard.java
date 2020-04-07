@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
@@ -49,13 +50,12 @@ public class DashBoard extends Fragment {
         call.enqueue(new Callback<JsonElement>() {
             @Override
             public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
-                Log.d("ajju", response.body().toString());
 
                 JsonObject jsonObject = response.body().getAsJsonObject();
 
-                t1.setText(jsonObject.get("cases").toString());
-                t2.setText(jsonObject.get("deaths").toString());
-                t3.setText(jsonObject.get("recovered").toString());
+                t4.setText(jsonObject.get("cases").toString());
+                t5.setText(jsonObject.get("deaths").toString());
+                t6.setText(jsonObject.get("recovered").toString());
             }
 
             @Override
@@ -67,8 +67,13 @@ public class DashBoard extends Fragment {
         call1.enqueue(new Callback<JsonElement>() {
             @Override
             public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
-                t4.setText(response.body().toString());
-                Log.d("ajju", response.body().toString());
+                JsonObject jsonObject = response.body().getAsJsonObject();
+                JsonArray jsonArray = jsonObject.getAsJsonArray("statewise");
+                JsonObject j = jsonArray.get(0).getAsJsonObject();
+
+                t1.setText(j.get("confirmed").toString());
+                t2.setText(j.get("deaths").toString());
+                t3.setText(j.get("recovered").toString());
             }
 
             @Override
