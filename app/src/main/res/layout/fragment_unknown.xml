@@ -3,12 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".states.States">
+    tools:context=".Unknown">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_states"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/list_states"/>
+        android:text="Unknown" />
 
 </FrameLayout>
