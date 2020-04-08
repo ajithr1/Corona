@@ -10,14 +10,25 @@ public class State {
 
     private String recovered;
 
-    public State(String name, String cases, String deaths, String recovered) {
+    private String today;
+
+    State(String name, String cases, String deaths, String recovered, String today) {
         this.name = name;
         this.cases = cases;
         this.deaths = deaths;
         this.recovered = recovered;
+        this.today = today;
     }
 
-    public String getName() {
+    String getToday() {
+        return today;
+    }
+
+    public void setToday(String today) {
+        this.today = today;
+    }
+
+    String getName() {
         return name;
     }
 
@@ -25,7 +36,7 @@ public class State {
         this.name = name;
     }
 
-    public String getCases() {
+    String getCases() {
         return cases;
     }
 
@@ -33,7 +44,7 @@ public class State {
         this.cases = cases;
     }
 
-    public String getDeaths() {
+    String getDeaths() {
         return deaths;
     }
 
@@ -41,7 +52,7 @@ public class State {
         this.deaths = deaths;
     }
 
-    public String getRecovered() {
+    String getRecovered() {
         return recovered;
     }
 

@@ -30,7 +30,7 @@ import retrofit2.Response;
  */
 public class States extends Fragment {
 
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
 
     public States() {
         // Required empty public constructor
@@ -55,6 +55,7 @@ public class States extends Fragment {
             @Override
             public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
 
+                assert response.body() != null;
                 JsonObject jsonObject = response.body().getAsJsonObject();
                 JsonArray jsonArray = jsonObject.getAsJsonArray("statewise");
 
@@ -65,7 +66,8 @@ public class States extends Fragment {
                 for (int i=1; i<jsonArray.size(); i++) {
                     JsonObject json = jsonArray.get(i).getAsJsonObject();
                     arrayList.add(new State(json.get("state").toString(), json.get("confirmed").toString(),
-                            json.get("deaths").toString(), json.get("recovered").toString()));
+                            json.get("deaths").toString(), json.get("recovered").toString(),
+                            json.get("deltaconfirmed").toString()));
                 }
 
                 StatesAdapter statesAdapter = new StatesAdapter(arrayList);

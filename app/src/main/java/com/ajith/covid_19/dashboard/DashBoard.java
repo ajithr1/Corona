@@ -18,12 +18,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.util.Date;
 import java.util.Objects;
 
 import retrofit2.Call;
@@ -32,7 +26,7 @@ import retrofit2.Response;
 
 public class DashBoard extends Fragment {
 
-    private TextView t1, t2, t3, t4, t5, t6, date_i, date_w;
+    private TextView t1, t2, t3, t4, t5, t6, date_i, date_w,s1, s2, s3, s4, s5;
 
     public DashBoard() {
         // Required empty public constructor
@@ -51,6 +45,11 @@ public class DashBoard extends Fragment {
         t6 = view.findViewById(R.id.india_recoverec);
         date_i = view.findViewById(R.id.date_india);
         date_w = view.findViewById(R.id.date_world);
+        s1 = view.findViewById(R.id.s_t_cases);
+        s2 = view.findViewById(R.id.s_t_deaths);
+        s3 = view.findViewById(R.id.s_t_recovered);
+        s4 = view.findViewById(R.id.w_t_cases);
+        s5 = view.findViewById(R.id.w_t_deaths);
 
         ApiInterface apiInterface = ApiWorld.getRetrofit().create(ApiInterface.class);
         ApiInterface apiInt = ApiIndia.getRetrofit().create(ApiInterface.class);
@@ -67,6 +66,9 @@ public class DashBoard extends Fragment {
                 t4.setText(jsonObject.get("cases").toString());
                 t5.setText(jsonObject.get("deaths").toString());
                 t6.setText(jsonObject.get("recovered").toString());
+
+                s4.setText(jsonObject.get("todayCases").toString());
+                s5.setText(jsonObject.get("todayDeaths").toString());
             }
 
             @Override
@@ -86,6 +88,10 @@ public class DashBoard extends Fragment {
                 t2.setText(j.get("deaths").toString());
                 t3.setText(j.get("recovered").toString());
                 date_i.setText(j.get("lastupdatedtime").toString());
+
+                s1.setText(j.get("deltaconfirmed").toString());
+                s2.setText(j.get("deltadeaths").toString());
+                s3.setText(j.get("deltarecovered").toString());
             }
 
             @Override

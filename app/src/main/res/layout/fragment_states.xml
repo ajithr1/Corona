@@ -9,6 +9,7 @@
         android:id="@+id/recycler_states"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/list_states"/>
+        android:background="#6200EE"
+        tools:listitem="@layout/list_states" />
 
 </FrameLayout>

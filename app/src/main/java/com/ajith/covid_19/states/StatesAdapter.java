@@ -16,7 +16,7 @@ public class StatesAdapter extends RecyclerView.Adapter<StatesAdapter.StatesView
 
     private ArrayList<State> stateArrayList;
 
-    public StatesAdapter(ArrayList<State> stateArrayList) {
+    StatesAdapter(ArrayList<State> stateArrayList) {
         this.stateArrayList = stateArrayList;
     }
 
@@ -36,6 +36,7 @@ public class StatesAdapter extends RecyclerView.Adapter<StatesAdapter.StatesView
         holder.cases.setText(state.getCases());
         holder.deaths.setText(state.getDeaths());
         holder.recover.setText(state.getRecovered());
+        holder.today.setText(state.getToday());
     }
 
     @Override
@@ -45,7 +46,7 @@ public class StatesAdapter extends RecyclerView.Adapter<StatesAdapter.StatesView
 
     static class StatesViewHolder extends RecyclerView.ViewHolder{
 
-        TextView name, cases, deaths, recover;
+        TextView name, cases, deaths, recover, today;
 
         StatesViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -54,6 +55,7 @@ public class StatesAdapter extends RecyclerView.Adapter<StatesAdapter.StatesView
             cases = itemView.findViewById(R.id.state_cases);
             deaths = itemView.findViewById(R.id.state_deaths);
             recover = itemView.findViewById(R.id.state_recovered);
+            today = itemView.findViewById(R.id.state_today);
         }
     }
 }
