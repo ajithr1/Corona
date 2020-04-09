@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.ajith.covid_19.ApiInterface;
 import com.ajith.covid_19.R;
@@ -31,6 +32,7 @@ import retrofit2.Response;
 public class States extends Fragment {
 
     private RecyclerView recyclerView;
+    private ProgressBar progressBar;
 
     public States() {
         // Required empty public constructor
@@ -43,6 +45,10 @@ public class States extends Fragment {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_states, container, false);
         recyclerView = view.findViewById(R.id.recycler_states);
+        progressBar = view.findViewById(R.id.progressBar2);
+
+        progressBar.setVisibility(View.VISIBLE);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         final ArrayList<State> arrayList = new ArrayList<>();
@@ -71,13 +77,15 @@ public class States extends Fragment {
                 }
 
                 StatesAdapter statesAdapter = new StatesAdapter(arrayList);
-
                 recyclerView.setAdapter(statesAdapter);
+
+                progressBar.setVisibility(View.INVISIBLE);
             }
 
             @Override
             public void onFailure(Call<JsonElement> call, Throwable t) {
                 Log.d("ajju", "onFailure: States");
+                progressBar.setVisibility(View.INVISIBLE);
             }
         });
 

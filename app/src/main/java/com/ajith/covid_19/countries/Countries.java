@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.ajith.covid_19.ApiInterface;
 import com.ajith.covid_19.R;
@@ -33,6 +34,7 @@ import retrofit2.Response;
 public class Countries extends Fragment {
 
     private RecyclerView recyclerView;
+    private ProgressBar progressBar;
 
     public Countries() {
         // Required empty public constructor
@@ -46,6 +48,10 @@ public class Countries extends Fragment {
 
         final View view = inflater.inflate(R.layout.fragment_countries, container, false);
         recyclerView = view.findViewById(R.id.recycler_countries);
+        progressBar = view.findViewById(R.id.progressBar);
+
+        progressBar.setVisibility(View.VISIBLE);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         final ArrayList<Country> countries = new ArrayList<>();
@@ -74,12 +80,14 @@ public class Countries extends Fragment {
 
                     CountryAdapter countryAdapter = new CountryAdapter(countries);
                     recyclerView.setAdapter(countryAdapter);
+                    progressBar.setVisibility(View.INVISIBLE);
                 }
             }
 
             @Override
             public void onFailure(Call<JsonElement> call, Throwable t) {
                 Log.d("ajju", "onFailure: -countries");
+                progressBar.setVisibility(View.INVISIBLE);
             }
         });
 
