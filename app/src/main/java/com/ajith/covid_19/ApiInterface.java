@@ -8,7 +8,7 @@ import retrofit2.http.GET;
 
 public interface ApiInterface {
 
-    @GET("all")
+    @GET("AllReports")
     Call<JsonElement> getDataWorld();
 
     @GET("data.json")

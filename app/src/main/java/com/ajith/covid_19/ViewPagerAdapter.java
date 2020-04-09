@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.ajith.covid_19.countries.Countries;
 import com.ajith.covid_19.dashboard.DashBoard;
 import com.ajith.covid_19.states.States;
 
@@ -19,15 +20,17 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
 
-        if (position == 0){
+        if (position == 0) {
             return new DashBoard();
-        }
+        } else if (position == 1) {
             return new States();
+        }
+        return new Countries();
     }
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
     @Nullable
@@ -36,14 +39,17 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
         String temp = "";
 
-        switch (position){
+        switch (position) {
 
             case 0:
                 temp = "DashBoard";
-            break;
+                break;
             case 1:
                 temp = "States";
-            break;
+                break;
+            case 2:
+                temp = "Countries";
+                break;
         }
 
         return temp;

@@ -54,30 +54,10 @@ public class DashBoard extends Fragment {
         ApiInterface apiInterface = ApiWorld.getRetrofit().create(ApiInterface.class);
         ApiInterface apiInt = ApiIndia.getRetrofit().create(ApiInterface.class);
 
-        Call<JsonElement> call = apiInterface.getDataWorld();
-        Call<JsonElement> call1 = apiInt.getDataIndia();
+        Call<JsonElement> callWorld = apiInterface.getDataWorld();
+        Call<JsonElement> callIndia = apiInt.getDataIndia();
 
-        call.enqueue(new Callback<JsonElement>() {
-            @Override
-            public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
-
-                JsonObject jsonObject = response.body().getAsJsonObject();
-
-                t4.setText(jsonObject.get("cases").toString());
-                t5.setText(jsonObject.get("deaths").toString());
-                t6.setText(jsonObject.get("recovered").toString());
-
-                s4.setText(jsonObject.get("todayCases").toString());
-                s5.setText(jsonObject.get("todayDeaths").toString());
-            }
-
-            @Override
-            public void onFailure(Call<JsonElement> call, Throwable t) {
-                Log.d("ajju", Objects.requireNonNull(t.getMessage()));
-            }
-        });
-
-        call1.enqueue(new Callback<JsonElement>() {
+        callIndia.enqueue(new Callback<JsonElement>() {
             @Override
             public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
                 JsonObject jsonObject = response.body().getAsJsonObject();
@@ -96,7 +76,34 @@ public class DashBoard extends Fragment {
 
             @Override
             public void onFailure(Call<JsonElement> call, Throwable t) {
-                Log.d("ajju", Objects.requireNonNull(t.getMessage()));
+                Log.d("ajju", "India fail- "+Objects.requireNonNull(t.getMessage()));
+            }
+        });
+
+        callWorld.enqueue(new Callback<JsonElement>() {
+            @Override
+            public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+
+                JsonObject jsonObject = response.body().getAsJsonObject();
+                JsonArray jsonArray = jsonObject.getAsJsonArray("reports");
+
+                JsonObject jsonObject1 = jsonArray.get(0).getAsJsonObject();
+                JsonArray jsonArray1 = jsonObject1.getAsJsonArray("table");
+                JsonArray jsonArray2 = jsonArray1.get(0).getAsJsonArray();
+                JsonObject jsonObject2 = jsonArray2.get(0).getAsJsonObject();
+
+
+                t4.setText(jsonObject2.get("TotalCases").toString());
+                t5.setText(jsonObject2.get("TotalDeaths").toString());
+                t6.setText(jsonObject2.get("TotalRecovered").toString());
+
+                s4.setText(jsonObject2.get("NewCases").toString());
+                s5.setText(jsonObject2.get("NewDeaths").toString());
+            }
+
+            @Override
+            public void onFailure(Call<JsonElement> call, Throwable t) {
+                Log.d("ajju", "World fail - "+Objects.requireNonNull(t.getMessage()));
             }
         });
 

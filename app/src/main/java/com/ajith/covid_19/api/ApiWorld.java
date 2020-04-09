@@ -11,16 +11,14 @@ public class ApiWorld {
     https://corona.lmao.ninja/all
 
      */
-    private static final String BASE_URL = "https://corona.lmao.ninja/";
+    private static final String BASE_URL_2 = "https://corona.lmao.ninja/";
     /*accurate 2
     https://corona-virus-stats.herokuapp.com/api/v1/cases/general-stats
      */
     private static final String BASE_URL_1 = "https://api.covid19api.com/";
     /*accurate 3
      */
-    private static final String BASE_URL_2 = "https://api.covid19api.com/";
-    //accurate 4
-    private static final String BASE_URL_3 = "https://api.covid19api.com/";
+    private static final String BASE_URL = "https://covid19-server.chrismichael.now.sh/api/v1/";
     private static Retrofit retrofit;
 
 
@@ -29,9 +27,8 @@ public class ApiWorld {
 
             OkHttpClient client = new OkHttpClient.Builder()
                     .retryOnConnectionFailure(true)
+                    .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                     .build();
-
-            //.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
 
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)

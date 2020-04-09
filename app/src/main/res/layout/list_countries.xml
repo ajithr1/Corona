@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="16dp"
     android:layout_margin="8dp">
 
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/state_name"
+            android:id="@+id/country_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -36,10 +36,10 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/state_name" />
+            app:layout_constraintTop_toBottomOf="@+id/country_name" />
 
         <TextView
-            android:id="@+id/state_cases"
+            android:id="@+id/country_cases"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -50,7 +50,7 @@
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/state_name" />
+            app:layout_constraintTop_toBottomOf="@+id/country_name" />
 
         <TextView
             android:id="@+id/text3"
@@ -66,7 +66,7 @@
             app:layout_constraintTop_toBottomOf="@+id/text2" />
 
         <TextView
-            android:id="@+id/state_deaths"
+            android:id="@+id/country_deaths"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -76,7 +76,7 @@
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/state_cases" />
+            app:layout_constraintTop_toBottomOf="@+id/country_cases" />
 
         <TextView
             android:id="@+id/text4"
@@ -92,7 +92,7 @@
             app:layout_constraintTop_toBottomOf="@+id/text3" />
 
         <TextView
-            android:id="@+id/state_recovered"
+            android:id="@+id/country_recovered"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -102,7 +102,7 @@
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/state_deaths" />
+            app:layout_constraintTop_toBottomOf="@+id/country_deaths" />
 
         <TextView
             android:id="@+id/textView3"
@@ -120,7 +120,7 @@
             app:layout_constraintTop_toBottomOf="@+id/text4" />
 
         <TextView
-            android:id="@+id/state_today"
+            android:id="@+id/country_today"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -129,7 +129,7 @@
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/state_recovered" />
+            app:layout_constraintTop_toBottomOf="@+id/country_recovered" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
