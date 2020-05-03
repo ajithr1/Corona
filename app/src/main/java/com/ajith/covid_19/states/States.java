@@ -73,7 +73,8 @@ public class States extends Fragment {
                     JsonObject json = jsonArray.get(i).getAsJsonObject();
                     arrayList.add(new State(json.get("state").toString(), json.get("confirmed").toString(),
                             json.get("deaths").toString(), json.get("recovered").toString(),
-                            json.get("deltaconfirmed").toString()));
+                            json.get("deltaconfirmed").toString(), json.get("deltadeaths").toString(),
+                            json.get("deltarecovered").toString()));
                 }
 
                 StatesAdapter statesAdapter = new StatesAdapter(arrayList);

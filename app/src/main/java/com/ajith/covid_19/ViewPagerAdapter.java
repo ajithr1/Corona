@@ -1,5 +1,10 @@
 package com.ajith.covid_19;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -12,20 +17,34 @@ import com.ajith.covid_19.states.States;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
-    ViewPagerAdapter(@NonNull FragmentManager fm) {
+    Context context;
+
+    ViewPagerAdapter(@NonNull FragmentManager fm, Context context) {
         super(fm);
+
+        this.context = context;
     }
 
     @NonNull
     @Override
     public Fragment getItem(int position) {
 
-        if (position == 0) {
-            return new DashBoard();
-        } else if (position == 1) {
-            return new States();
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+
+        if (networkInfo != null && networkInfo.isConnectedOrConnecting()) {
+
+            if (position == 0) {
+                return new DashBoard();
+            } else if (position == 1) {
+                return new States();
+            }
+            return new Countries();
+
+        }else {
+            return new NoConnection();
         }
-        return new Countries();
     }
 
     @Override

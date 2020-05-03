@@ -39,22 +39,22 @@ public class DashBoard extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_dash_board, container, false);
-        t1 = view.findViewById(R.id.state_cases);
-        t2 = view.findViewById(R.id.state_deaths);
-        t3 = view.findViewById(R.id.state_recovered);
-        t4 = view.findViewById(R.id.india_cases);
-        t5 = view.findViewById(R.id.india_deaths);
-        t6 = view.findViewById(R.id.india_recoverec);
-        date_i = view.findViewById(R.id.date_india);
+        t1 = view.findViewById(R.id.i_cases);
+        t2 = view.findViewById(R.id.i_deaths);
+        t3 = view.findViewById(R.id.i_recovered);
+        t4 = view.findViewById(R.id.w_cases);
+        t5 = view.findViewById(R.id.w_deaths);
+        t6 = view.findViewById(R.id.w_recoverec);
+        date_i = view.findViewById(R.id.date_world);
         date_w = view.findViewById(R.id.date_world);
-        s1 = view.findViewById(R.id.s_t_cases);
-        s2 = view.findViewById(R.id.s_t_deaths);
-        s3 = view.findViewById(R.id.s_t_recovered);
-        s4 = view.findViewById(R.id.w_t_cases);
-        s5 = view.findViewById(R.id.w_t_deaths);
+        s1 = view.findViewById(R.id.i_t_c);
+        s2 = view.findViewById(R.id.i_t_d);
+        s3 = view.findViewById(R.id.i_t_r);
+        s4 = view.findViewById(R.id.w_t_c);
+        s5 = view.findViewById(R.id.w_t_d);
 
-        p1 = view.findViewById(R.id.progressBar3);
-        p2 = view.findViewById(R.id.progressBar4);
+        p1 = view.findViewById(R.id.progress_world);
+        p2 = view.findViewById(R.id.progress_india);
 
         p1.setVisibility(View.VISIBLE);
         p2.setVisibility(View.VISIBLE);
@@ -72,14 +72,14 @@ public class DashBoard extends Fragment {
                 JsonArray jsonArray = jsonObject.getAsJsonArray("statewise");
                 JsonObject j = jsonArray.get(0).getAsJsonObject();
 
-                t1.setText(j.get("confirmed").toString());
-                t2.setText(j.get("deaths").toString());
-                t3.setText(j.get("recovered").toString());
-                date_i.setText(j.get("lastupdatedtime").toString());
+                t1.setText(removeQuotes(j.get("confirmed").toString()));
+                t2.setText(removeQuotes(j.get("deaths").toString()));
+                t3.setText(removeQuotes(j.get("recovered").toString()));
+                date_i.setText(removeQuotes(j.get("lastupdatedtime").toString()));
 
-                s1.setText(j.get("deltaconfirmed").toString());
-                s2.setText(j.get("deltadeaths").toString());
-                s3.setText(j.get("deltarecovered").toString());
+                s1.setText(removeQuotes(j.get("deltaconfirmed").toString()));
+                s2.setText(removeQuotes(j.get("deltadeaths").toString()));
+                s3.setText(removeQuotes(j.get("deltarecovered").toString()));
 
                 p1.setVisibility(View.INVISIBLE);
             }
@@ -104,12 +104,12 @@ public class DashBoard extends Fragment {
                 JsonObject jsonObject2 = jsonArray2.get(0).getAsJsonObject();
 
 
-                t4.setText(jsonObject2.get("TotalCases").toString());
-                t5.setText(jsonObject2.get("TotalDeaths").toString());
-                t6.setText(jsonObject2.get("TotalRecovered").toString());
+                t4.setText(removeQuotes(jsonObject2.get("TotalCases").toString()));
+                t5.setText(removeQuotes(jsonObject2.get("TotalDeaths").toString()));
+                t6.setText(removeQuotes(jsonObject2.get("TotalRecovered").toString()));
 
-                s4.setText(jsonObject2.get("NewCases").toString());
-                s5.setText(jsonObject2.get("NewDeaths").toString());
+                s4.setText(removeQuotes(jsonObject2.get("NewCases").toString()));
+                s5.setText(removeQuotes(jsonObject2.get("NewDeaths").toString()));
                 p2.setVisibility(View.INVISIBLE);
             }
 
@@ -121,5 +121,11 @@ public class DashBoard extends Fragment {
         });
 
         return view;
+    }
+
+    private String removeQuotes(String string){
+
+        String res = string.replace("\"", "");
+        return res;
     }
 }

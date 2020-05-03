@@ -1,6 +1,6 @@
 package com.ajith.covid_19.countries;
 
-public class Country {
+class Country {
 
     private String name;
 
@@ -10,14 +10,17 @@ public class Country {
 
     private String recovered;
 
-    private String today;
+    private String today_cases;
 
-    public Country(String name, String cases, String deaths, String recovered, String today) {
+    private String today_deaths;
+
+    Country(String name, String cases, String deaths, String recovered, String today_cases, String today_deaths) {
         this.name = name;
         this.cases = cases;
         this.deaths = deaths;
         this.recovered = recovered;
-        this.today = today;
+        this.today_cases = today_cases;
+        this.today_deaths = today_deaths;
     }
 
     public String getName() {
@@ -28,7 +31,7 @@ public class Country {
         this.name = name;
     }
 
-    public String getCases() {
+    String getCases() {
         return cases;
     }
 
@@ -44,7 +47,7 @@ public class Country {
         this.deaths = deaths;
     }
 
-    public String getRecovered() {
+    String getRecovered() {
         return recovered;
     }
 
@@ -52,11 +55,19 @@ public class Country {
         this.recovered = recovered;
     }
 
-    public String getToday() {
-        return today;
+    public String getToday_cases() {
+        return today_cases;
     }
 
-    public void setToday(String today) {
-        this.today = today;
+    public void setToday_cases(String today_cases) {
+        this.today_cases = today_cases;
+    }
+
+    public String getToday_deaths() {
+        return today_deaths;
+    }
+
+    public void setToday_deaths(String today_deaths) {
+        this.today_deaths = today_deaths;
     }
 }

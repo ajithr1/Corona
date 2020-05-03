@@ -76,7 +76,7 @@ public class Countries extends Fragment {
                             j.get("TotalCases").toString(),
                             j.get("TotalDeaths").toString(),
                             j.get("TotalRecovered").toString(),
-                            j.get("NewCases").toString()));
+                            j.get("NewCases").toString(),j.get("NewDeaths").toString()));
 
                     CountryAdapter countryAdapter = new CountryAdapter(countries);
                     recyclerView.setAdapter(countryAdapter);

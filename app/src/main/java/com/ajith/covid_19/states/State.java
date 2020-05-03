@@ -10,25 +10,23 @@ public class State {
 
     private String recovered;
 
-    private String today;
+    private String today_cases;
 
-    State(String name, String cases, String deaths, String recovered, String today) {
+    private String today_deaths;
+
+    private String today_recovered;
+
+    State(String name, String cases, String deaths, String recovered, String today_cases, String today_deaths, String today_recovered) {
         this.name = name;
         this.cases = cases;
         this.deaths = deaths;
         this.recovered = recovered;
-        this.today = today;
+        this.today_cases = today_cases;
+        this.today_deaths = today_deaths;
+        this.today_recovered = today_recovered;
     }
 
-    String getToday() {
-        return today;
-    }
-
-    public void setToday(String today) {
-        this.today = today;
-    }
-
-    String getName() {
+    public String getName() {
         return name;
     }
 
@@ -44,7 +42,7 @@ public class State {
         this.cases = cases;
     }
 
-    String getDeaths() {
+    public String getDeaths() {
         return deaths;
     }
 
@@ -58,5 +56,29 @@ public class State {
 
     public void setRecovered(String recovered) {
         this.recovered = recovered;
+    }
+
+    public String getToday_cases() {
+        return today_cases;
+    }
+
+    public void setToday_cases(String today_cases) {
+        this.today_cases = today_cases;
+    }
+
+    public String getToday_deaths() {
+        return today_deaths;
+    }
+
+    public void setToday_deaths(String today_deaths) {
+        this.today_deaths = today_deaths;
+    }
+
+    public String getToday_recovered() {
+        return today_recovered;
+    }
+
+    public void setToday_recovered(String today_recovered) {
+        this.today_recovered = today_recovered;
     }
 }

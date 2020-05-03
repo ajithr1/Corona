@@ -32,11 +32,13 @@ public class StatesAdapter extends RecyclerView.Adapter<StatesAdapter.StatesView
 
         State state = stateArrayList.get(position);
 
-        holder.name.setText(state.getName());
-        holder.cases.setText(state.getCases());
-        holder.deaths.setText(state.getDeaths());
-        holder.recover.setText(state.getRecovered());
-        holder.today.setText(state.getToday());
+        holder.name.setText(removeQuotes(state.getName()));
+        holder.cases.setText(removeQuotes(state.getCases()));
+        holder.deaths.setText(removeQuotes(state.getDeaths()));
+        holder.recover.setText(removeQuotes(state.getRecovered()));
+        holder.today_c.setText(removeQuotes(state.getToday_cases()));
+        holder.today_d.setText(removeQuotes(state.getToday_deaths()));
+        holder.today_r.setText(removeQuotes(state.getToday_recovered()));
     }
 
     @Override
@@ -46,16 +48,24 @@ public class StatesAdapter extends RecyclerView.Adapter<StatesAdapter.StatesView
 
     static class StatesViewHolder extends RecyclerView.ViewHolder{
 
-        TextView name, cases, deaths, recover, today;
+        TextView name, cases, deaths, recover, today_c, today_d, today_r;
 
         StatesViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            name = itemView.findViewById(R.id.state_name);
-            cases = itemView.findViewById(R.id.state_cases);
-            deaths = itemView.findViewById(R.id.state_deaths);
-            recover = itemView.findViewById(R.id.state_recovered);
-            today = itemView.findViewById(R.id.state_today);
+            name = itemView.findViewById(R.id.s_name);
+            cases = itemView.findViewById(R.id.i_cases);
+            deaths = itemView.findViewById(R.id.i_deaths);
+            recover = itemView.findViewById(R.id.i_recovered);
+            today_c = itemView.findViewById(R.id.i_t_c);
+            today_d = itemView.findViewById(R.id.i_t_d);
+            today_r = itemView.findViewById(R.id.i_t_r);
         }
+    }
+
+    private String removeQuotes(String string){
+
+        String res = string.replace("\"", "");
+        return res;
     }
 }

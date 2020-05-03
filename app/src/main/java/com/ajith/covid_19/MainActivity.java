@@ -1,15 +1,16 @@
 package com.ajith.covid_19;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
-
-import android.os.Bundle;
-import android.widget.TableLayout;
 
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int STORAGE_PERMISSION_CODE = 1;
+    private static final String TAG = "ajju";
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ViewPagerAdapter viewPagerAdapter;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
 
-        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), this);
         tabLayout.setupWithViewPager(viewPager);
         viewPager.setAdapter(viewPagerAdapter);
     }

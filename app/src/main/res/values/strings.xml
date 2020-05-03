@@ -7,7 +7,7 @@
     <string name="today_cases">Today cases</string>
     <string name="india">India</string>
     <string name="world">World</string>
-    <string name="corona_cases">Corona Cases</string>
+    <string name="corona_cases">Confirmed</string>
     <string name="recovered">Recovered</string>
     <string name="date">Date</string>
     <string name="today">Today</string>

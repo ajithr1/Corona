@@ -14,9 +14,9 @@ import java.util.ArrayList;
 
 public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryViewHolder> {
 
-    ArrayList<Country> countries;
+    private ArrayList<Country> countries;
 
-    public CountryAdapter(ArrayList<Country> countries) {
+    CountryAdapter(ArrayList<Country> countries) {
         this.countries = countries;
     }
 
@@ -32,11 +32,12 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
 
         Country country = countries.get(position);
 
-        holder.name.setText(country.getName());
-        holder.cases.setText(country.getCases());
-        holder.deaths.setText(country.getDeaths());
-        holder.recover.setText(country.getRecovered());
-        holder.today.setText(country.getToday());
+        holder.name.setText(removeQuotes(country.getName()));
+        holder.cases.setText(removeQuotes(country.getCases()));
+        holder.deaths.setText(removeQuotes(country.getDeaths()));
+        holder.recover.setText(removeQuotes(country.getRecovered()));
+        holder.today_cases.setText(removeQuotes(country.getToday_cases()));
+        holder.today_deaths.setText(removeQuotes(country.getToday_deaths()));
     }
 
     @Override
@@ -46,16 +47,23 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
 
     static class CountryViewHolder extends RecyclerView.ViewHolder{
 
-        TextView name, cases, deaths, recover, today;
+        TextView name, cases, deaths, recover, today_cases, today_deaths;
 
         CountryViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            name = itemView.findViewById(R.id.country_name);
-            cases = itemView.findViewById(R.id.country_cases);
-            deaths = itemView.findViewById(R.id.country_deaths);
-            recover = itemView.findViewById(R.id.country_recovered);
-            today = itemView.findViewById(R.id.country_today);
+            name = itemView.findViewById(R.id.c_name);
+            cases = itemView.findViewById(R.id.w_cases);
+            deaths = itemView.findViewById(R.id.w_deaths);
+            recover = itemView.findViewById(R.id.w_recoverec);
+            today_cases = itemView.findViewById(R.id.w_t_c);
+            today_deaths = itemView.findViewById(R.id.w_t_d);
         }
+    }
+
+    private String removeQuotes(String string){
+
+        String res = string.replace("\"", "");
+        return res;
     }
 }
