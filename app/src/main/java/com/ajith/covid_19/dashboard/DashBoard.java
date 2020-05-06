@@ -53,8 +53,8 @@ public class DashBoard extends Fragment {
         s4 = view.findViewById(R.id.w_t_c);
         s5 = view.findViewById(R.id.w_t_d);
 
-        p1 = view.findViewById(R.id.progress_world);
-        p2 = view.findViewById(R.id.progress_india);
+        p2 = view.findViewById(R.id.progress_world);
+        p1 = view.findViewById(R.id.progress_india);
 
         p1.setVisibility(View.VISIBLE);
         p2.setVisibility(View.VISIBLE);
